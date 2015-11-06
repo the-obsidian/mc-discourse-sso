@@ -39,7 +39,7 @@
 		background-color: _palette(bg);
 		@include vendor('background-image', (
 			'url("/images/overlay.png")',
-			'url("/images/background.png")'
+			'url("/images/background.jpg")'
 		));
 		background-repeat:		repeat,						no-repeat;
 		background-size:		100px 100px,				cover;
