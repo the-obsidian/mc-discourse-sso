@@ -1,6 +1,6 @@
 {
   "name": "mc-discourse-sso",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Allows users to login to Discourse SSO with their Minecraft accounts",
   "main": "dist/index.js",
   "scripts": {
