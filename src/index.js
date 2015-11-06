@@ -32,7 +32,6 @@ app.engine('ect', renderer.render);
 app.use(sassMiddleware({
   src: path.join(__dirname, '..', 'public', 'sass'),
   dest: path.join(__dirname, '..', 'public', 'css'),
-  debug: true,
   outputStyle: 'compressed',
   prefix: '/css',
 }));
@@ -79,8 +78,6 @@ app.get('/discourse/sso', (req, res) => {
   const payload = req.query.sso;
   const sig = req.query.sig;
 
-  console.log(payload, sig);
-
   if (!sso.validate(payload, sig)) {
     res.setFlash('SSO request was invalid!');
     return res.redirect('/');
@@ -115,8 +112,6 @@ app.get('/logout', (req, res) => res.redirect('/'));
 app.post('/login', (req, res) => {
   const username = req.body.email;
   const password = req.body.password;
-
-  console.log(username, password);
 
   MC.authenticate(username, password).then(data => {
     if (data.accessToken) {
