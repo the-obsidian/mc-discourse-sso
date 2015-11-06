@@ -4,12 +4,14 @@
   "description": "Allows users to login to Discourse SSO with their Minecraft accounts",
   "main": "dist/index.js",
   "scripts": {
+    "start": "node dist/index.js",
     "start-dev": "nodemon node_modules/.bin/babel-node src",
     "test": "echo No tests configured && exit 0",
     "lint": "eslint src",
     "build": "babel src --out-dir dist/",
     "preversion": ". ./resources/checkgit.sh && npm test",
-    "prepublish": ". ./resources/prepublish.sh"
+    "prepublish": ". ./resources/prepublish.sh",
+    "postinstall": "npm run build"
   },
   "files": [
     "dist",
