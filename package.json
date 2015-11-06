@@ -1,0 +1,53 @@
+{
+  "name": "mc-discourse-sso",
+  "version": "1.0.0",
+  "description": "Allows users to login to Discourse SSO with their Minecraft accounts",
+  "main": "dist/index.js",
+  "scripts": {
+    "start-dev": "nodemon node_modules/.bin/babel-node src",
+    "test": "echo No tests configured && exit 0",
+    "lint": "eslint src",
+    "build": "babel src --out-dir dist/",
+    "preversion": ". ./resources/checkgit.sh && npm test",
+    "prepublish": ". ./resources/prepublish.sh"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/the-obsidian/mc-discourse-sso.git"
+  },
+  "keywords": [
+    "Minecraft",
+    "Discourse",
+    "SSO"
+  ],
+  "author": "Jacob Gillespie <jacobwgillespie@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/the-obsidian/mc-discourse-sso/issues"
+  },
+  "homepage": "https://github.com/the-obsidian/mc-discourse-sso#readme",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "cookie-parser": "^1.4.0",
+    "discourse-sso": "^1.0.3",
+    "ect": "^0.5.9",
+    "express": "^4.13.3",
+    "express-session": "^1.12.1",
+    "node-sass-middleware": "^0.9.7",
+    "request": "^2.65.0"
+  },
+  "devDependencies": {
+    "babel": "^6.0.15",
+    "babel-eslint": "^4.1.4",
+    "babel-preset-es2015": "^6.1.2",
+    "babel-preset-stage-0": "^6.1.2",
+    "babel-runtime": "^6.0.14",
+    "eslint": "^1.8.0",
+    "eslint-config-airbnb": "^0.1.0"
+  }
+}

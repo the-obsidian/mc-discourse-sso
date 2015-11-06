@@ -1,0 +1,47 @@
+<% extend 'layout.ect' %>
+
+<section id="main">
+  <header>
+    <h1>The Obsidian</h1>
+
+    <% if @flash : %>
+    <p class="info"><strong><%- @flash %></strong></p>
+    <% end %>
+  </header>
+
+  <hr />
+
+  <% if @auth.isAuthenticated : %>
+  <h2>Your Account</h2>
+
+  <p>Hello, <strong><%= @auth.user.username %></strong>, you have successfully logged in with your Minecraft account.</p>
+
+  <form method="post" action="/logout">
+    <ul class="actions">
+      <li><button type="submit" class="button">Logout</button></li>
+    </ul>
+  </form>
+
+  <% else : %>
+
+  <h2>Login</h2>
+  <form method="post" action="/login">
+    <div class="field">
+      <input type="text" name="email" id="email" placeholder="Minecraft Email" />
+    </div>
+    <div class="field">
+      <input type="password" name="password" id="password" placeholder="Minecraft Password" />
+    </div>
+    <ul class="actions">
+      <li><button type="submit" class="button">Login</button></li>
+    </ul>
+  </form>
+
+  <% end %>
+
+  <hr />
+
+  <footer>
+    <p class="info">The Obsidian uses your Minecraft account to securely authenticate you across our various services.  You will need a migrated (Mojang) account - see <a href="https://account.mojang.com/migrate">this page</a> for more information.</p>
+  </footer>
+</section>

@@ -1,0 +1,36 @@
+#main h1 {
+  letter-spacing: 0.0357142857142857em;
+  color: #000;
+
+  font-family: "proxima-nova", "Proxima Nova", Lora, Georgia, Times, serif;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-style: normal;
+  margin: 0 auto;
+  margin-top: 12px;
+}
+
+input {
+  text-transform: none;
+  text-align: center;
+}
+
+#main button {
+  text-transform: uppercase;
+  font-size: 1em;
+  color: #fff !important;
+  background-color: #191;
+}
+
+#main {
+  max-width: 400px;
+}
+
+p.info {
+  text-transform: none;
+}
+
+p.info a {
+  color: #009;
+  font-weight: bold;
+}

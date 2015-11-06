@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Login :: The Obsidian</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <noscript><link rel="stylesheet" href="/css/noscript.css" /></noscript>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://use.typekit.net/fai0fdu.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+  </head>
+  <body class="is-loading">
+    <div id="wrapper">
+      <% content %>
+
+      <footer id="footer">
+        <ul class="copyright">
+          <li>&copy; The Obsidian</li>
+        </ul>
+      </footer>
+    </div>
+
+    <script>
+      if ('addEventListener' in window) {
+        window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
+        document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+      }
+    </script>
+  </body>
+</html>
