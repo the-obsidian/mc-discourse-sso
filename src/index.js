@@ -93,12 +93,13 @@ app.get('/discourse/sso', (req, res) => {
   }
 
   const nonce = sso.getNonce(payload);
+  const username = req.auth.user.username;
   const params = {
     nonce,
     external_id: req.auth.user.id,
     email: req.auth.user.email,
-    username: req.auth.user.username,
-    avatar_url: `https://minotar.net/avatar/#{req.auth.user.username}/240.png`,
+    username: username,
+    avatar_url: `https://tntup.me/avatar/${username}/240.png`,
     avatar_force_update: true,
   };
   const query = sso.buildLoginString(params);
