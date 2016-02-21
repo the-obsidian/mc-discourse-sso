@@ -99,7 +99,7 @@ app.get('/discourse/sso', (req, res) => {
     external_id: req.auth.user.id,
     email: req.auth.user.email,
     username: username,
-    avatar_url: `https://tntup.me/avatar/${username}/240.png`,
+    avatar_url: `https://crafatar.com/avatars/${req.auth.user.id}?size=240&overlay=true`,
     avatar_force_update: true,
   };
   const query = sso.buildLoginString(params);
