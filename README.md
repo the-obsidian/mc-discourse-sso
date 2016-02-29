@@ -4,9 +4,9 @@ Allows users to login to Discourse with their Minecraft account.
 
 ## Configuration
 
-* `DISCOURSE_URL` - URL of your Discourse forum (without the trailing slash)
+* `DISCOURSE_URL` - URL of your Discourse forum (the full URL without the trailing slash, like `http://forum.example.com`)
 * `DISCOURSE_SSO_SECRET` - your SSO secret
-* `COOKIE_SECRET` - your session cookie secret
+* `COOKIE_SECRET` - your session cookie secret (anything random, like perhaps a 128 character random hex string)
 * `PORT` - the port to run the server
 
 ## Running
