@@ -14,3 +14,7 @@ Allows users to login to Discourse with their Minecraft account.
 ```shell
 $ npm start
 ```
+
+## License
+
+Copyright (c) 2015-2017 Jacob Gillespie.  MIT license.  See `LICENSE`.
