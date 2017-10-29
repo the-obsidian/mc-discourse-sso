@@ -23,12 +23,12 @@ declare class AuthedRequest extends express$Request {
 
 const COOKIE_KEY: string = process.env.COOKIE_KEY || 'mc-discourse-sso-user';
 
-const COOKIE_SECRET: ?string = process.env.COOKIE_SECRET;
+const { COOKIE_SECRET }: { COOKIE_SECRET: ?string } = process.env;
 if (!COOKIE_SECRET) throw new Error('Env var COOKIE_SECRET is empty');
 
-const DISCOURSE_URL: ?string = process.env.DISCOURSE_URL;
+const { DISCOURSE_URL }: { DISCOURSE_URL: ?string } = process.env;
 if (!DISCOURSE_URL) throw new Error('Missing Discourse URL - please pass as DISCOURSE_URL');
-const DISCOURSE_SSO_SECRET: ?string = process.env.DISCOURSE_SSO_SECRET;
+const { DISCOURSE_SSO_SECRET }: { DISCOURSE_SSO_SECRET: ?string } = process.env;
 
 if (!DISCOURSE_SSO_SECRET) throw new Error('Missing SSO secret - please pass as DISCOURSE_SSO_SECRET');
 
@@ -103,7 +103,7 @@ app.get('/', (req: express$Request, res: express$Response, next: express$NextFun
 app.get('/discourse/sso', (req: express$Request, res: express$Response, next: express$NextFunction) => {
   const ctx = context.get(req);
   const payload = req.query.sso;
-  const sig = req.query.sig;
+  const { sig } = req.query;
 
   if (!sso.validate(payload, sig)) {
     ctx.setFlash('SSO request was invalid!');
@@ -122,7 +122,7 @@ app.get('/discourse/sso', (req: express$Request, res: express$Response, next: ex
   }
 
   const nonce: string = sso.getNonce(payload);
-  const username: string = ctx.auth.user.username;
+  const { username }: { username: string } = ctx.auth.user;
   const params = {
     nonce,
     external_id: ctx.auth.user.id,
@@ -149,7 +149,7 @@ app.get('/logout', (req: express$Request, res: express$Response, next: express$N
 app.post('/login', async (req: express$Request, res: express$Response, next: express$NextFunction) => {
   const ctx = context.get(req);
   const username: string = req.body.email;
-  const password: string = req.body.password;
+  const { password }: { password: string } = req.body;
 
   try {
     const data = await authenticate(username, password);
@@ -208,7 +208,7 @@ app.use((err: ?Error, req: express$Request, res: express$Response, next: express
 
 const server: Server = app.listen(process.env.PORT || 3000, () => {
   const host: string = server.address().address;
-  const port: string = server.address().port;
+  const { port }: { port: string } = server.address();
 
   console.log('mc-discourse-sso listening at http://%s:%s', host, port);
 });
