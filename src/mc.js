@@ -1,33 +1,48 @@
-import request from 'request';
+// @flow
 
-export default class MC {
-  static authenticate(username, password) {
-    return new Promise((resolve, reject) => {
-      const params = {
-        agent: {
-          name: 'Minecraft',
-          version: 1,
-        },
-        username,
-        password,
-      };
+import ExtendableError from 'es6-error';
+import fetch from 'isomorphic-fetch';
 
-      request({
-        method: 'POST',
-        uri: 'https://authserver.mojang.com/authenticate',
-        body: params,
-        json: true,
-      }, (err, res) => {
-        if (err) return reject(err.response.body);
-        if (res.body.error) return reject(res.body);
-        if (res.body.selectedProfile && res.body.selectedProfile.legacy) {
-          return reject({
-            error: 'LegacyAccountError',
-          });
-        }
+export class MCError extends ExtendableError {
+  body: Object;
 
-        resolve(res.body);
-      });
-    });
+  constructor(message: string, body: Object) {
+    super(message);
+    this.body = body;
   }
 }
+
+export default async (username: string, password: string) => {
+  const params = {
+    agent: {
+      name: 'Minecraft',
+      version: 1,
+    },
+    username,
+    password,
+  };
+
+  const res = await fetch('https://authserver.mojang.com/authenticate', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(params),
+  });
+
+  const body: Object = await res.json();
+
+  if (res.status < 200 && res.status >= 300) {
+    throw new MCError(res.statusText, body);
+  }
+
+  if (body.error) throw new MCError(body.error, body);
+
+  if (body.selectedProfile && body.selectedProfile.legacy) {
+    throw new MCError('LegacyAccountError', {
+      error: 'LegacyAccountError',
+    });
+  }
+
+  return body;
+};

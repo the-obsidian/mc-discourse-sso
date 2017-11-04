@@ -1,4 +1,5 @@
 *.log
 dist/
 flow-coverage/
+flow-typed/
 node_modules/
