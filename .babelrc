@@ -1,14 +1,11 @@
 {
-  "presets": ["flow"],
+  "presets": [
+    "flow"
+  ],
   "plugins": [
-    "add-module-exports",
-    "syntax-async-functions",
-    "syntax-trailing-function-commas",
-    "transform-async-to-generator",
+    "syntax-object-rest-spread",
     "transform-class-properties",
     "transform-es2015-modules-commonjs",
-    "transform-flow-strip-types",
-    "transform-object-rest-spread",
     "transform-runtime"
   ]
 }
