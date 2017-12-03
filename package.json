@@ -3,11 +3,15 @@
   "version": "1.1.0",
   "description": "Allows users to login to Discourse SSO with their Minecraft accounts",
   "main": "dist/index.js",
+  "engines": {
+    "node": "8.x.x"
+  },
   "scripts": {
     "build": "babel src --out-dir dist --source-maps",
     "flow": "flow",
     "flow-coverage": "flow-coverage-report -i 'src/**/*.js' -t html -t json -t text",
     "lint": "eslint src",
+    "postinstall": "npm run build",
     "start-dev": "nodemon node_modules/.bin/babel-node src",
     "start": "node dist/index.js",
     "watch": "babel src --out-dir dist --source-maps --watch"
