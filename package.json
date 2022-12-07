@@ -43,7 +43,7 @@
     "discourse-sso": "^1.0.3",
     "ect": "^0.5.9",
     "es6-error": "^4.0.2",
-    "express": "^4.13.3",
+    "express": "^4.17.3",
     "express-session": "^1.12.1",
     "isomorphic-fetch": "^2.2.1",
     "node-sass-middleware": "^0.11.0",
